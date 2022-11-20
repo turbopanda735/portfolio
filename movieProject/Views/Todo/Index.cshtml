@@ -1,0 +1,58 @@
+﻿@using DocumentFormat.OpenXml.Office.CustomUI;
+@using movieProject.Models.Todo;
+@model IEnumerable<TodoModel>;
+@{
+    ViewData["Title"] = "Todo List!";
+}
+
+<h1>Todo API</h1>
+
+<form asp-controller="Todo" asp-action="Details">
+    <h4 class="text-center p-4">
+        Search by id: <input type="text" name="id">
+        <input type="submit" value="Search" class="btn-light" />
+    </h4>
+</form>
+
+<body>
+    <div class="row m-0">
+        @foreach (var todo in Model)
+        {
+            var troo = "Yes!";
+            var falsy = "No :(";
+            if (todo.IsComplete == false)
+            {
+                <br />
+                <div class="col-sm-4">
+                    <div class="card mb-3" style="background-color: saddlebrown">
+                        <div class="text-center">
+                            <h1 class="card-text pb-2 pt-2">Task: @todo.Name</h1>
+                            <h2 class="card-text">Task#: @todo.Id</h2>
+                            <h2 class="card-text pb-2" style="color: darkgreen">Done? @falsy</h2>
+
+                            <button type="button" class="btn btn-link" onclick="putTodo" id="update">update</button>
+
+                        </div>
+                    </div>
+                </div>
+                <br />
+            }
+            else
+            {
+                <br />
+                <div class="col-sm-4">
+                    <div class="card mb-3" style="background-color: palegoldenrod">
+                        <div class="text-center">
+                            <h1 class="card-text pb-2 pt-2">Task: @todo.Name</h1>
+                            <div>
+                                <h2 class="card-text">Task#: @todo.Id</h2>
+                                <h2 class="card-text pb-2" style="color: darkred">Done?: @troo</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br />
+            }
+        }
+    </div>
+</body>

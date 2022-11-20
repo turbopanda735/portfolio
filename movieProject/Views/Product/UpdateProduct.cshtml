@@ -1,0 +1,84 @@
+﻿@using movieProject.Models.Product
+@model Product
+@{
+    ViewData["Title"] = "Update Product";
+    var category = "";
+    var onSale = "";
+    var style = "";
+}
+<div>
+    @switch (Model.CategoryID)
+    {
+        case 1:
+            category = "\\images\\product\\computers.jpg";
+            break;
+        case 2:
+            category = "\\images\\product\\appliances.jpg";
+            break;
+        case 3:
+            category = "\\images\\product\\phones.jpg";
+            break;
+        case 4:
+            category = "\\images\\product\\audio.jpg";
+            break;
+        case 5:
+            category = "\\images\\product\\home-theater.jpg";
+            break;
+        case 6:
+            category = "\\images\\product\\printers.jpg";
+            break;
+        case 7:
+            category = "\\images\\product\\music.jpg";
+            break;
+        case 8:
+            category = "\\images\\product\\controllers.jpg";
+            break;
+        case 9:
+            category = "\\images\\product\\services.png";
+            break;
+        case 10:
+            category = "\\images\\product\\other.jpeg";
+            break;
+        default:
+            category = "\\images\\product\\other.jpeg";
+            break;
+    }
+    <div class="col-md-3 pt-3 m-auto">
+        <div class="card mb-3 text-center">
+            <div class="text-center">
+                <img class="card-img-top opacity-25 rounded img-fluid" src="@category" alt="product backdrop" style="max-height: 400px; min-height: 400px;">
+                <div class="card-img-overlay">
+                    @using (Html.BeginForm("UpdateProductToDatabase", "Product", "Post"))
+                    {
+                        <div class="pb-3">
+                            <input asp-for="ProductID" type="hidden" value="@Model.ProductID" />
+
+                            <label asp-for="Name" class="control-label">Name</label>
+                            <input type="text" name="Name" class="form-control" value="@Model.Name" />
+
+                            <label asp-for="Price" class="control-label">Price</label>
+                            <input type="number" step="0.01" name="Price" class="form-control" value="@Model.Price" />
+
+                            <label asp-for="StockLevel" class="control-label">Stock Level</label>
+                            <input type="number" step="1" name="Stock Level" class="form-control" value="@Model.StockLevel" />
+                        </div>
+
+                        <input type="submit" value="confirm update" class="btn btn-primary btn-outline-dark" />
+
+                        @using (Html.BeginForm("DeleteProduct", "Product", "Post"))
+                        {
+                            <input type="hidden" asp-for="ProductID" value="@Model.ProductID" />
+                            <input type="submit" onclick="return confirm('Are you sure?')" value="delete product" class="btn btn-danger btn-outline-dark" />
+                        }
+                    }
+                    @if (Model.OnSale == 1)
+                    {
+                        onSale = "SALE!";
+                        style = "color: red;";
+                    }
+                    <h5 class="card-text" style="@style">@onSale</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

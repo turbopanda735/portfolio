@@ -1,0 +1,45 @@
+﻿@using movieProject.Models.Movie;
+@model IEnumerable<MovieModel>;
+@{
+    ViewData["Title"] = "Movie API";
+}
+
+
+<div class="text-center p-4">
+    <p>This project uses The Movie Database API</p>
+    <a href="https://www.themoviedb.org/"><img src="/images/tmdb-logo.png" alt="TMDB Logo" /></a>
+</div>
+
+
+<form asp-controller="Movie" asp-action="Index">
+        <h4 class="text-center p-4">
+            Filter by name: <input type="text" name="QueryString">
+            <input type="submit" value="Search" class="btn-light" />
+        </h4>
+</form>
+
+<div class="row m-0">
+    @foreach (var movie in Model)
+    {
+        <div class="col-sm-4">
+            <div class="card mb-3">
+                <div class="text-center">
+                    <img class="card-img-top opacity-50 rounded" src="@movie.Backdrop" alt="movie backdrop">
+                    <div class="card-img-overlay">
+                        <h1 class="card-title">@movie.Title</h1>
+                        <img class="rounded pb-2" src="@movie.Poster">
+                        <h5 class="card-text pb-2">@movie.Overview</h5>
+                        <div>
+                            <h4 class="card-text">Release Date</h4>
+                            <h5 class="card-text">@movie.Released</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+<div class="text-center p-4">
+    <img src="/images/johnny.png" class="rounded mx-auto"/>
+</div>

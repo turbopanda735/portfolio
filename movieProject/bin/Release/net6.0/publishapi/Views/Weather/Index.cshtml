@@ -1,0 +1,65 @@
+﻿@using movieProject.Models.Weather;
+@model WeatherModel;
+@{
+    ViewData["Title"] = "Weather API";
+}
+
+<form asp-controller="Weather" asp-action="Index">
+    <div class="text-center pb-3 pt-3">
+        <h4>
+            What's the Weather?:
+        </h4>
+        <input type="text" name="QueryString" />
+        <input type="submit" value="Search" />
+    </div>
+</form>
+
+<div class="pb-3">
+    <div class="card text-center mx-auto" style="width:500px">
+        <div class="text-center">
+            @{
+                var weather = Model;
+                var link = "";
+                if (weather.Main.ToLower().Contains("rain") || weather.Main.ToLower().Contains("drizzle"))
+                {
+                    link = "\\images\\weather\\rain.jpg";
+                }
+                else if (weather.Main.ToLower().Contains("cloud"))
+                {
+                    link = "\\images\\weather\\clouds.jpg";
+                }
+                else if (weather.Main.ToLower().Contains("thunderstorm"))
+                {
+                    link = "\\images\\weather\\thunderstorm.jpg";
+                }
+                else if (weather.Main.ToLower().Contains("snow"))
+                {
+                    link = "\\images\\weather\\snow.jpeg";
+                }
+                else if (weather.Main.ToLower().Contains("clear"))
+                {
+                    link = "\\images\\weather\\sunny.jpg";
+                }
+                else
+                {
+                    link = "\\images\\weather\\volcano.jpg";
+                }
+                <img src="@link" class="card-img-top opacity-50 rounded">
+                <div class="card-img-overlay">
+                    <h2>@Model.Forecast</h2>
+                    <div class="card-body">
+                        <h5>@Model.City @Model.Country</h5>
+                        <h3>@Model.CurrentTemp F</h3>
+                    </div>
+                    <br />
+                    <br />
+                    <div class="card-body">
+                        <h3>Daily High: @Model.DailyHigh F</h3>
+                        <h3>Daily Low: @Model.DailyLow F</h3>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+

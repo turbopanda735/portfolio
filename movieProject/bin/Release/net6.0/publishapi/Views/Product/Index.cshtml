@@ -1,0 +1,84 @@
+﻿@using movieProject.Models.Product
+@model IEnumerable<Product>
+@{
+    ViewData["Title"] = "SQL Database";
+}
+
+
+
+<h1 class="text-center pt-3 pb-2">SQL Database</h1>
+
+<div style="display: block" class="pb-4 text-center">
+    <a href="/Product/InsertProduct" class="btn btn-primary btn-outline-dark">create product</a>
+</div>
+
+@{
+    var category = "";
+    var onSale = "";
+    var style = "";
+}
+
+<div class="row m-0">
+    @foreach (var product in Model)
+    {
+        @switch (product.CategoryID)
+        {
+            case 1:
+                category = "\\images\\product\\computers.jpg";
+                break;
+            case 2:
+                category = "\\images\\product\\appliances.jpg";
+                break;
+            case 3:
+                category = "\\images\\product\\phones.jpg";
+                break;
+            case 4:
+                category = "\\images\\product\\audio.jpg";
+                break;
+            case 5:
+                category = "\\images\\product\\home-theater.jpg";
+                break;
+            case 6:
+                category = "\\images\\product\\printers.jpg";
+                break;
+            case 7:
+                category = "\\images\\product\\music.jpg";
+                break;
+            case 8:
+                category = "\\images\\product\\controllers.jpg";
+                break;
+            case 9:
+                category = "\\images\\product\\services.png";
+                break;
+            case 10:
+                category = "\\images\\product\\other.jpeg";
+                break;
+            default:
+                category = "\\images\\product\\other.jpeg";
+                break;
+        }
+        <div class="col-sm-3">
+            <div class="card mb-3">
+                <div class="text-center">
+                        <img class="card-img-top opacity-25 rounded img-fluid" src="@category" alt="product backdrop" style="max-height: 300px; min-height: 300px;">
+                    <div class="card-img-overlay">
+                        <h3 class="card-title">@product.Name</h3>
+                        <h4 class="card-text pb-2" style="color: forestgreen">$@product.Price</h4>
+                        @if (product.OnSale == 1)
+                        {
+                            onSale = "SALE!";
+                            style = "color: red;";
+                        }
+                        <h5 class="card-text" style="@style">@onSale</h5>
+                        <h6>Stock:</h6>
+                        <p>@product.StockLevel</p>
+                        <a href="/Product/ViewProduct/@product.ProductID" class="btn btn-light btn-outline-dark">view</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+    <div style="display: block" class="pb-4 text-center">
+        <a href="/Product/InsertProduct" class="btn btn-primary btn-outline-dark">create product</a>
+    </div>
+</div>
