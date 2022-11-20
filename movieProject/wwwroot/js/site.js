@@ -1,11 +1,29 @@
-﻿// Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
-// for details on configuring this project to bundle and minify static web assets.
+﻿// everything goes in app?
 
-// Write your JavaScript code.
+const App = () => {
+    const [data, setData] = useState({ data: [] });
 
-import React from 'react';
-import ReactDOM from 'react-dom/client'
+    const updateClick = async () => {
 
-const Greeting = () => {
+        const response = await fetch('https://joelkozek.com/api/todo/1')
+        const result = await response.json()
 
-}
+        console.log('and the result is: ', JSON.stringify(result, null, 3))
+    }
+    console.log(data);
+
+    return (
+        <div>
+            <button onClick={updateClick}> update </button>
+            {data.data.map(todo => {
+                return (
+                    <div key={todo.Id}>
+                        <p>{todo.IsComplete}</p>
+                    </div>
+                );
+            })}
+        </div>
+    );
+};
+
+ReactDOM.render(<App/>, document.getElementById('update-button-root'));

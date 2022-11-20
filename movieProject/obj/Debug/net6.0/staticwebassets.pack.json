@@ -101,6 +101,10 @@
       "PackagePath": "staticwebassets\\images\\weather\\volcano.jpg"
     },
     {
+      "Id": "E:\\movieProject\\movieProject\\wwwroot\\js\\JavaScript.js",
+      "PackagePath": "staticwebassets\\js\\JavaScript.js"
+    },
+    {
       "Id": "E:\\movieProject\\movieProject\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },

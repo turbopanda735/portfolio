@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "KWKoFXmnk9BF3QwhgAfApohsfH+aarHl2rBrrhtKVTU=",
+  "Hash": "YOFeUCyT1AKtYHLa4bfByE7SRv6/tQnoYnXJMtq7So4=",
   "Source": "movieProject",
   "BasePath": "_content/movieProject",
   "Mode": "Default",
@@ -457,6 +457,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\weather\\volcano.jpg"
+    },
+    {
+      "Identity": "E:\\movieProject\\movieProject\\wwwroot\\js\\JavaScript.js",
+      "SourceId": "movieProject",
+      "SourceType": "Discovered",
+      "ContentRoot": "E:\\movieProject\\movieProject\\wwwroot\\",
+      "BasePath": "_content/movieProject",
+      "RelativePath": "js/JavaScript.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\JavaScript.js"
     },
     {
       "Identity": "E:\\movieProject\\movieProject\\wwwroot\\js\\site.js",
